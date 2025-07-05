@@ -16,6 +16,7 @@ type NativeDivPropsToExtend = Omit<
   | 'aria-label' // Handled by "KnobHeadlessLabelProps"
   | 'aria-labelledby' // Handled by "KnobHeadlessLabelProps"
   | 'aria-disabled' // Handled by "disabled"
+  | 'data-disabled' // Handled by "disabled"
   | 'tabIndex' // Handled by "includeIntoTabOrder"
 >;
 
@@ -166,7 +167,6 @@ export const KnobHeadless = forwardRef<HTMLDivElement, KnobHeadlessProps>(
         aria-valuemax={valueMax}
         aria-orientation={getAriaOrientation(orientation, axis)}
         aria-valuetext={valueRawDisplayFn(valueRaw)}
-        aria-disabled={disabled}
         tabIndex={getTabIndex(includeIntoTabOrder, disabled)}
         {...mergeProps(
           bindDrag(),
@@ -183,6 +183,10 @@ export const KnobHeadless = forwardRef<HTMLDivElement, KnobHeadlessProps>(
                 /* v8 ignore stop */ // eslint-disable-line capitalized-comments
               }
             },
+          },
+          disabled && {
+            'aria-disabled': true,
+            'data-disabled': true,
           },
           rest,
         )}
