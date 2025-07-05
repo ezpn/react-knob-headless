@@ -18,7 +18,7 @@ export function KnobBaseThumb({theme, value01}: KnobBaseThumbProps) {
         theme === 'pink' && 'bg-pink-300',
         theme === 'green' && 'bg-green-300',
         theme === 'sky' && 'bg-sky-300',
-        theme === 'gray' && 'bg-neutral-700'
+        theme === 'gray' && 'bg-neutral-700',
       )}
     >
       <div className='absolute h-full w-full' style={{rotate: `${angle}deg`}}>
