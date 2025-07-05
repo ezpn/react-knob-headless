@@ -102,7 +102,7 @@ type KnobHeadlessProps = NativeDivPropsToExtend &
   };
 
 const getTabIndex = (includeIntoTabOrder: boolean, disabled: boolean) =>
-  disabled || !includeIntoTabOrder ? 0 : 1;
+  !disabled && includeIntoTabOrder ? 0 : -1;
 
 export const KnobHeadless = forwardRef<HTMLDivElement, KnobHeadlessProps>(
   (
